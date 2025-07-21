@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yajat Chordiya</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .typing::after {
+      content: '|';
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-950 text-white min-h-screen flex flex-col items-center justify-center px-4">
+
+  <!-- Hero Section -->
+  <section class="text-center mb-12">
+    <h1 class="text-5xl font-bold mb-4">Yajat Chordiya</h1>
+    <p class="text-xl text-gray-400 typing" id="bio"></p>
+  </section>
+
+  <!-- Mood Button Section -->
+  <section class="mb-12 text-center">
+    <h2 class="text-2xl font-semibold mb-4">Mood Button</h2>
+    <p id="moodText" class="mb-4 italic">Click the button to change the vibe 👇</p>
+    <button onclick="changeMood()" class="bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded-xl text-white font-medium transition">Change Mood</button>
+  </section>
+
+  <!-- Socials -->
+  <section class="flex flex-wrap justify-center gap-6 mb-12">
+    <a href="https://www.instagram.com/yajat_0747/" class="hover:scale-110 transition transform">📸 Instagram</a>
+    <a href="https://www.snapchat.com/add/yajat0747" class="hover:scale-110 transition transform">👻 Snapchat</a>
+    <a href="tel:+917387337125" class="hover:scale-110 transition transform">📞 Call Me</a>
+    <button onclick="copyText('yajat0747@gmail.com')" class="hover:scale-110 transition transform">📧 Copy Email</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-500">
+    Made with sarcasm & caffeine ☕
+  </footer>
+
+  <script>
+    const bio = "Brains, charm, and a mild addiction to wordplay. Sarcasm is my love language. Timing is my weapon.";
+    let index = 0;
+    function typeBio() {
+      if (index < bio.length) {
+        document.getElementById("bio").textContent += bio.charAt(index);
+        index++;
+        setTimeout(typeBio, 40);
+      }
+    }
+    typeBio();
+
+    const moods = [
+      "I'm not lazy, I'm on energy-saving mode.",
+      "404 Motivation Not Found.",
+      "Fluent in sarcasm and movie quotes.",
+      "Running on coffee and questionable decisions.",
+      "Trust me, I'm almost funny."
+    ];
+
+    function changeMood() {
+      const moodText = document.getElementById('moodText');
+      const newMood = moods[Math.floor(Math.random() * moods.length)];
+      moodText.textContent = newMood;
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text);
+      alert(`Copied: ${text}`);
+    }
+  </script>
+
+</body>
+
+</html>
